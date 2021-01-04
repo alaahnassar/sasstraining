@@ -98,5 +98,5 @@ a{
 }
 $primary: red;
 $secondary: #ddd;
-$theme-colors: ('mag' : #0f0);
+$theme-colors: ('mag' : rgb(200, 255, 0));
 @import './bs4/bootstrap.scss';
