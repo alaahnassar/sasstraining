@@ -1,0 +1,102 @@
+$font-stack: Arial, Helvetica ,sans-serif;
+
+$light-color: rgb(236, 243, 253);
+
+$primary-color:#0e6cff;
+
+$secondary-color: #ff8700;
+
+
+@function set-text-color($color) {
+    @if(lightness($color) > 70) {
+      @return #333;
+    } @else {
+      @return #fff;
+    }
+  }
+  
+  // Set background & text color
+  @mixin set-background($color) {
+    background-color: $color;
+    color: set-text-color($color)
+  }
+  
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: $light-color;
+    font-family: $font-stack;
+    line-height: 1.6;
+}
+a{
+    text-decoration: none;
+    color: #fff;
+}
+.showcase{
+    @include set-background($primary-color);
+    height: 600px;
+
+    nav{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        ul{
+           display: flex;
+           list-style-type: none; 
+        }
+        li{
+            padding: 15px;
+        }
+        a:hover  {
+            color: $secondary-color;
+        }
+    }
+    &-content{
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 30px;
+
+        img{
+            width: 50%;
+        }
+        h1{
+            font-size: 50px;
+            line-height: 1.2;
+        }
+    }
+}
+.container {
+    max-width: 1100px;
+    padding: 0 30px;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+  %btn
+{
+    display: inline-block;
+    border-radius: 5px;
+    padding: 8px 20px;
+    margin: 15px 3px;
+  
+    &:hover {
+      transform: scale(.98);
+    }
+}
+.btn-primary{
+    @extend %btn;
+    background-color:lighten($color:$primary-color, $amount: 10%) 
+}
+.btn-secondary{
+    @extend %btn;
+    background-color: $secondary-color;
+}
+$primary: red;
+$secondary: #ddd;
+$theme-colors: ('mag' : #0f0);
+@import './bs4/bootstrap.scss';
